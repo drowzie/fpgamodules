@@ -5,6 +5,9 @@ use ieee.numeric_std.all;
 
 package crc_pkg is
 
+	--! Polynom constants
+	constant C_CRC_ETH_POLY : std_logic_vector(31 downto 0) := x"04C11DB7";
+
 	function calculate_crc (
 		data_in : std_logic_vector;
 		polynom : std_logic_vector;
@@ -30,9 +33,6 @@ package body crc_pkg is
 		end loop;
 		return v_temp;
 	end reverse_slv;
-
-	--! Polynom constants
-	constant C_CRC_ETH_POLY : std_logic_vector(31 downto 0) := x"04C11DB7";
 	
 	--! Calculates CRC with a LFSR design
 	--! The caclulation is done through a external lfsr
